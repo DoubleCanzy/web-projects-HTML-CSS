@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>  
+    <head>
+        <title>视差滚动</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <section>
+            <img src="./drive-download-20260831T102605Z-1-001/bg.jpg" id="bg">
+            <img src="./drive-download-20260831T102605Z-1-001/starsky.png" id="starsky">
+            <img src="./drive-download-20260831T102605Z-1-001/city.png" id="city">
+            <img src="./drive-download-20260831T102605Z-1-001/plli.png" id="plli">
+            <h2 id="text">Parallax Scrolling</h2>
+        </section>
+        <script type="text/javascript">
+            let bg = document.getElementById('bg');
+            let starsky = document.getElementById('starsky');
+            let city = document.getElementById('city');
+            let plli = document.getElementById('plli');
+            let text = document.getElementById('text');
+
+            window.addEventListener('scroll', function(){
+                var value = window.scrollY;
+
+                bg.style.top = value * 0.5 + 'px';
+                starsky.style.left = -value * 0.5 + 'px';
+                city.style.top = -value * 0.15 + 'px';
+                plli.style.top = value * 0.15 + 'px';
+                text.style.top = value * 1 + 'px';
+                // text.style.marginTop = value * 1.5 + 'px';
+            })
+        </script>
+    </body>
+</html>
