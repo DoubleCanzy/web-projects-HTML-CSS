@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张三 · 联系 — 前端开发工程师</title>
+
+    <!-- ===== SEO 标签 ===== -->
+    <meta name="description" content="联系张三：通过表单发送姓名、邮箱与留言，交流前端开发相关问题或合作意向。">
+    <meta name="keywords" content="张三, 前端开发工程师, 联系方式, 联系表单">
+    <meta name="author" content="张三">
+    <meta name="robots" content="index, follow">
+    <!-- TODO: 上线时替换为真实页面地址 -->
+    <link rel="canonical" href="https://example.com/basic-html-website/contact">
+
+    <!-- ===== Open Graph 标签（社交分享用） ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="张三 · 联系 — 前端开发工程师">
+    <meta property="og:description" content="联系张三：通过表单发送姓名、邮箱与留言。">
+    <!-- TODO: 上线时替换为真实页面地址 -->
+    <meta property="og:url" content="https://example.com/basic-html-website/contact">
+    <meta property="og:locale" content="zh_CN">
+
+    <!-- ===== favicon ===== -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+
+    <!-- 头部：姓名/logo + 全局导航（四个页面完全相同） -->
+    <header>
+        <p><a href="index.html">张三</a></p>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="projects.html">项目</a></li>
+                <li><a href="articles.html">文章</a></li>
+                <li><a href="contact.html">联系</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <h1>联系我</h1>
+        <p>对项目或合作感兴趣？填写下面的表单，我会尽快回复你。</p>
+
+        <section id="contact-form">
+
+            <form action="#" method="post">
+
+                <div>
+                    <label for="name">姓名</label>
+                    <input type="text" id="name" name="name" placeholder="你的名字" required>
+                </div>
+
+                <div>
+                    <label for="email">邮箱</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+
+                <div>
+                    <label for="subject">主题</label>
+                    <input type="text" id="subject" name="subject" placeholder="想聊点什么？">
+                </div>
+
+                <div>
+                    <label for="message">留言</label>
+                    <textarea id="message" name="message" rows="5" placeholder="写下你想说的话……" required></textarea>
+                </div>
+
+                <button type="submit">发送</button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <!-- 页脚：版权信息（四个页面完全相同） -->
+    <footer>
+        <p>© 2026 张三 · 保留所有权利</p>
+    </footer>
+
+</body>
+</html>

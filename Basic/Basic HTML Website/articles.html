@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张三 · 文章 — 前端开发工程师</title>
+
+    <!-- ===== SEO 标签 ===== -->
+    <meta name="description" content="张三的技术文章：语义化 HTML、表单、SEO、无障碍访问等前端主题的原创文章。">
+    <meta name="keywords" content="张三, 前端开发工程师, 技术文章, 语义化 HTML, 表单, SEO, 无障碍">
+    <meta name="author" content="张三">
+    <meta name="robots" content="index, follow">
+    <!-- TODO: 上线时替换为真实页面地址 -->
+    <link rel="canonical" href="https://example.com/basic-html-website/articles">
+
+    <!-- ===== Open Graph 标签（社交分享用） ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="张三 · 文章 — 前端开发工程师">
+    <meta property="og:description" content="张三的技术文章：语义化 HTML、表单、SEO、无障碍访问等前端主题的原创文章。">
+    <!-- TODO: 上线时替换为真实页面地址 -->
+    <meta property="og:url" content="https://example.com/basic-html-website/articles">
+    <meta property="og:locale" content="zh_CN">
+
+    <!-- ===== favicon ===== -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+
+    <!-- 头部：姓名/logo + 全局导航（四个页面完全相同） -->
+    <header>
+        <p><a href="index.html">张三</a></p>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="projects.html">项目</a></li>
+                <li><a href="articles.html">文章</a></li>
+                <li><a href="contact.html">联系</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <h1>文章</h1>
+        <p>分享学习前端过程中的思考与总结。</p>
+
+        <section id="article-list">
+
+            <article>
+                <h2><a href="#">语义化 HTML 的重要性</a></h2>
+                <p>为什么应该用 header、main、article 等语义标签而不是满屏的 div？本文从 SEO 与无障碍两个角度展开讨论。</p>
+            </article>
+
+            <article>
+                <h2><a href="#">理解 HTML 表单</a></h2>
+                <p>label、input、textarea 之间的关系，name 属性的作用，以及浏览器自带校验的工作原理。</p>
+            </article>
+
+            <article>
+                <h2><a href="#">网页 SEO 最佳实践</a></h2>
+                <p>title、description、canonical、Open Graph——每个标签在搜索引擎和社交分享中扮演什么角色。</p>
+            </article>
+
+            <article>
+                <h2><a href="#">无障碍访问基础</a></h2>
+                <p>屏幕阅读器如何"看"你的网页，写 HTML 时可以做哪些事让网站对所有人友好。</p>
+            </article>
+
+            <article>
+                <h2><a href="#">CSS Grid 入门指南</a></h2>
+                <p>用网格布局代替浮动与定位，快速搭出复杂页面结构（下个项目见）。</p>
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- 页脚：版权信息（四个页面完全相同） -->
+    <footer>
+        <p>© 2026 张三 · 保留所有权利</p>
+    </footer>
+
+</body>
+</html>
