@@ -14,7 +14,7 @@ HTML 和 CSS 的学习与练习项目集合。
 
 ## 项目列表
 
-| 项目 | 说明 |
-|------|------|
-| [single-page-cv](Basic/single-page-cv/) | 单页简历，HTML + CSS 练习 |
-| [视差滚动](practice/1.视差滚动/) | Parallax scrolling 视差滚动效果 |
+| 项目 | 说明 | 参考网站 |
+|------|------|------|
+| [single-page-cv](Basic/single-page-cv/) | 单页简历，HTML + CSS 练习 |[Single-Page CV](https://roadmap.sh/projects/single-page-cv)|
+| [视差滚动](practice/1.视差滚动/) | Parallax scrolling 视差滚动效果 |------|
