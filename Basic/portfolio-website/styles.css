@@ -1,0 +1,437 @@
+/* ============================================================
+   portfolio-website · 全局样式表
+   技术点：CSS 变量（含深色模式）、Flexbox、Grid、媒体查询、盒模型
+   ============================================================ */
+
+/* ---------- 1. 设计变量 ---------- */
+:root {
+    color-scheme: light dark;
+
+    /* 颜色 */
+    --color-bg: #f1f5f9;
+    --color-surface: #ffffff;
+    --color-text: #1e293b;
+    --color-text-muted: #64748b;
+    --color-primary: #2563eb;
+    --color-primary-hover: #1d4ed8;
+    --color-on-primary: #ffffff;
+    --color-accent: #f59e0b;
+    --color-border: #e2e8f0;
+
+    /* 字体 */
+    --font-heading: 'Noto Serif SC', 'Noto Sans SC', 'Songti SC', serif;
+    --font-body: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+
+    /* 布局与间距 */
+    --max-width: 1080px;
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+    --radius: 10px;
+    --shadow: 0 1px 3px rgb(15 23 42 / 0.08), 0 1px 2px rgb(15 23 42 / 0.06);
+}
+
+/* ---------- 2. 深色模式（跟随系统设置，纯 CSS 实现） ---------- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: #0f172a;
+        --color-surface: #1e293b;
+        --color-text: #e2e8f0;
+        --color-text-muted: #94a3b8;
+        --color-primary: #60a5fa;
+        --color-primary-hover: #93c5fd;
+        --color-on-primary: #0f172a;
+        --color-accent: #fbbf24;
+        --color-border: #334155;
+        --shadow: 0 1px 3px rgb(0 0 0 / 0.4);
+    }
+}
+
+/* ---------- 3. 基础重置与全局 ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* 盒模型：width/height 包含 padding 和 border */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    line-height: 1.3;
+}
+
+a {
+    color: var(--color-primary);
+}
+
+/* 键盘导航焦点可见（无障碍） */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* 内容容器：限宽 + 居中 */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-sm);
+}
+
+/* ---------- 4. 头部与导航（Flexbox） ---------- */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow);
+}
+
+.header-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-sm);
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: var(--color-primary);
+}
+
+.main-nav ul {
+    display: flex;
+    gap: var(--space-md);
+    list-style: none;
+}
+
+.main-nav a {
+    display: block;
+    padding: var(--space-xs) 0;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.main-nav a:hover {
+    color: var(--color-primary);
+}
+
+/* 当前页面的导航项高亮 */
+.main-nav a.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* ---------- 5. 首页 hero 区 ---------- */
+.hero {
+    padding: var(--space-xl) var(--space-sm);
+    text-align: center;
+    background: linear-gradient(180deg, var(--color-surface), var(--color-bg));
+    border-bottom: 1px solid var(--color-border);
+}
+
+.hero h1 {
+    font-size: 2.75rem;
+    margin-bottom: var(--space-xs);
+}
+
+.hero .role {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.hero .tagline {
+    color: var(--color-text-muted);
+}
+
+/* ---------- 6. 分区与卡片（Grid） ---------- */
+.section {
+    padding: var(--space-lg) 0;
+}
+
+.section h2,
+.card h2 {
+    margin-bottom: var(--space-md);
+    padding-left: 0.75rem;
+    border-left: 4px solid var(--color-primary);
+}
+
+/* 首页三栏：项目 / 工作经历 / 教育经历 */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    align-items: start;
+}
+
+.card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    box-shadow: var(--shadow);
+}
+
+.card article {
+    margin-bottom: var(--space-md);
+}
+
+.card article:last-child {
+    margin-bottom: 0;
+}
+
+.card h3 {
+    font-size: 1.05rem;
+    margin-bottom: var(--space-xs);
+}
+
+.card article p {
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-xs);
+}
+
+.card article ul {
+    padding-left: 1.25rem;
+    color: var(--color-text-muted);
+}
+
+/* 课程列表分两栏显示（桌面端） */
+.courses {
+    columns: 2;
+    column-gap: var(--space-md);
+    padding-left: 1.25rem;
+    color: var(--color-text-muted);
+}
+
+/* ---------- 7. 老师评价（blockquote） ---------- */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+}
+
+.reviews-grid blockquote {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    box-shadow: var(--shadow);
+}
+
+.reviews-grid blockquote p {
+    font-style: italic;
+    margin-bottom: var(--space-xs);
+}
+
+.reviews-grid cite {
+    color: var(--color-text-muted);
+    font-style: normal;
+}
+
+/* ---------- 8. 内页头部与项目/文章列表 ---------- */
+.page-header {
+    padding: var(--space-lg) var(--space-sm) var(--space-md);
+    text-align: center;
+}
+
+.page-header .subtitle {
+    color: var(--color-text-muted);
+    margin-top: var(--space-xs);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    padding-bottom: var(--space-lg);
+}
+
+.project-card .detail-link {
+    display: inline-block;
+    margin-top: var(--space-xs);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.project-card .detail-link:hover {
+    text-decoration: underline;
+}
+
+.article-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding-bottom: var(--space-lg);
+}
+
+.article-list .card h2 {
+    padding-left: 0;
+    border-left: none;
+    margin-bottom: var(--space-xs);
+}
+
+.article-list .card h2 a {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.article-list .card h2 a:hover {
+    color: var(--color-primary);
+}
+
+.article-list .card p {
+    color: var(--color-text-muted);
+}
+
+/* ---------- 9. 联系表单 ---------- */
+.contact-card {
+    max-width: 640px;
+    margin: 0 auto var(--space-xl);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    margin-bottom: var(--space-md);
+}
+
+.form-group label {
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    font: inherit;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: calc(var(--radius) / 2);
+    padding: 0.625rem 0.875rem;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.btn {
+    font: inherit;
+    font-weight: 600;
+    color: var(--color-on-primary);
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: calc(var(--radius) / 2);
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* ---------- 10. 页脚 ---------- */
+.site-footer {
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    padding: var(--space-md) var(--space-sm);
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+/* ---------- 11. 响应式：媒体查询 ---------- */
+/* 平板以下：三栏/两栏改为一栏 */
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 手机：头部纵向堆叠、导航换行、字号缩小 */
+@media (max-width: 600px) {
+    .header-inner {
+        flex-direction: column;
+        justify-content: center;
+        padding: var(--space-xs) var(--space-sm);
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--space-sm);
+    }
+
+    .hero {
+        padding: var(--space-lg) var(--space-sm);
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .courses {
+        columns: 1;
+    }
+
+    .contact-card {
+        padding: var(--space-md);
+    }
+}

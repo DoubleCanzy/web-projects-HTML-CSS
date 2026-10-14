@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张三 · 个人主页 — 前端开发工程师</title>
+
+    <!-- ===== SEO 标签 ===== -->
+    <meta name="description" content="张三的个人主页：前端开发工程师，展示项目作品、工作经历、教育背景与老师的评价。">
+    <meta name="keywords" content="张三, 前端开发工程师, 个人主页, 项目作品, 工作经历, HTML, CSS">
+    <meta name="author" content="张三">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://doublecanzy.github.io/web-projects-HTML-CSS/Basic/portfolio-website/">
+
+    <!-- ===== Open Graph 标签（社交分享用） ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="张三 · 个人主页 — 前端开发工程师">
+    <meta property="og:description" content="前端开发工程师张三的个人主页：项目、经历、教育与文章。">
+    <meta property="og:url" content="https://doublecanzy.github.io/web-projects-HTML-CSS/Basic/portfolio-website/">
+    <meta property="og:locale" content="zh_CN">
+
+    <!-- ===== Google Fonts（加分项：提升排版） ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- ===== favicon 与样式表 ===== -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- 头部：姓名/logo + 全局导航（四个页面相同，仅 active 项不同） -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="logo" href="index.html">张三</a>
+
+            <nav class="main-nav" aria-label="主导航">
+                <ul>
+                    <li><a class="active" href="index.html">首页</a></li>
+                    <li><a href="projects.html">项目</a></li>
+                    <li><a href="articles.html">文章</a></li>
+                    <li><a href="contact.html">联系</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 自我介绍 hero 区 -->
+    <section class="hero" id="hero">
+        <h1>张三</h1>
+        <p class="role">前端开发工程师</p>
+        <p class="tagline">响应式网站练习：Flexbox、媒体查询与 CSS 变量。</p>
+    </section>
+
+    <main>
+        <div class="container">
+
+            <!-- 三栏：项目 / 工作经历 / 教育经历 -->
+            <div class="grid">
+
+                <!-- 项目 -->
+                <section class="card" id="projects">
+                    <h2>项目</h2>
+                    <ul>
+                        <li><a href="projects.html">HTML 简历</a></li>
+                        <li><a href="projects.html">计算器</a></li>
+                        <li><a href="projects.html">问答应用</a></li>
+                        <li><a href="projects.html">倒计时器</a></li>
+                        <li><a href="projects.html">产品发布预告页</a></li>
+                    </ul>
+                </section>
+
+                <!-- 工作经历 -->
+                <section class="card" id="experience">
+                    <h2>工作经历</h2>
+
+                    <article>
+                        <h3>roadmap.sh</h3>
+                        <p>完成了平台上的所有项目练习。</p>
+                        <p>官网：<a href="https://roadmap.sh" target="_blank" rel="noopener">roadmap.sh</a></p>
+                    </article>
+
+                    <article>
+                        <h3>开源贡献</h3>
+                        <p>为 50+ 个开源项目贡献代码，个人项目累计获得 200+ GitHub Star。</p>
+                    </article>
+
+                    <article>
+                        <h3>工作假期旅行</h3>
+                        <p>以打工度假方式游历了 30+ 个国家。</p>
+                    </article>
+                </section>
+
+                <!-- 教育经历 -->
+                <section class="card" id="education">
+                    <h2>教育经历</h2>
+
+                    <article>
+                        <h3>某某大学</h3>
+                        <p>计算机科学与技术 · 本科，GPA 3.76 / 4.0</p>
+                        <p>2018 年 9 月 – 2022 年 6 月</p>
+                        <ul>
+                            <li>获 Acme 黑客马拉松一等奖</li>
+                            <li>组织 30 场技术分享会</li>
+                        </ul>
+                    </article>
+
+                    <article>
+                        <h3>修读课程</h3>
+                        <ul class="courses">
+                            <li>面向对象程序设计</li>
+                            <li>数据结构与算法</li>
+                            <li>Web 工程</li>
+                            <li>人工智能</li>
+                            <li>人机交互</li>
+                            <li>计算机图形学</li>
+                            <li>数据库管理系统</li>
+                            <li>分布式数据库系统</li>
+                            <li>离散数学</li>
+                        </ul>
+                    </article>
+                </section>
+
+            </div>
+
+            <!-- 老师的评价 -->
+            <section class="section" id="reviews">
+                <h2>老师的评价</h2>
+
+                <div class="reviews-grid">
+                    <blockquote>
+                        <p>张三是个非常认真的学生，作业总是超额完成。</p>
+                        <cite>— 王老师，Web 工程讲师</cite>
+                    </blockquote>
+
+                    <blockquote>
+                        <p>他在团队项目里总是主动承担最难的部分，代码质量很高。</p>
+                        <cite>— 李老师，数据结构与算法讲师</cite>
+                    </blockquote>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- 页脚：版权信息（四个页面相同） -->
+    <footer class="site-footer">
+        <p>© 2026 张三 · 保留所有权利</p>
+    </footer>
+
+</body>
+</html>
