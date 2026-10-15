@@ -1,0 +1,218 @@
+/* ============================================================
+   Changelog Component · 样式表
+   核心考点：CSS 定位（时间轴竖线/圆点）与 Grid 布局、响应式
+   ============================================================ */
+
+/* ---------- 1. 设计变量 ---------- */
+:root {
+    color-scheme: light dark;
+
+    /* 颜色 */
+    --color-bg: #f4f5f7;
+    --color-surface: #ffffff;
+    --color-text: #1a1a1a;
+    --color-muted: #6b7280;
+    --color-line: #e5e7eb;
+    --color-dot: #2563eb;
+    --color-btn: #111111;
+    --color-btn-text: #ffffff;
+
+    /* 字体 */
+    --font-heading: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+
+    /* 其他 */
+    --radius: 16px;
+    --shadow: 0 4px 24px rgb(0 0 0 / 0.08);
+}
+
+/* ---------- 2. 深色模式（跟随系统设置，纯 CSS 实现） ---------- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: #0f1115;
+        --color-surface: #1a1d23;
+        --color-text: #e5e7eb;
+        --color-muted: #9ca3af;
+        --color-line: #2a2e36;
+        --color-dot: #60a5fa;
+        --color-btn: #f4f5f7;
+        --color-btn-text: #111111;
+        --shadow: 0 4px 24px rgb(0 0 0 / 0.5);
+    }
+}
+
+/* ---------- 3. 基础重置 ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+/* 键盘导航焦点可见（无障碍） */
+.btn:focus-visible {
+    outline: 2px solid var(--color-dot);
+    outline-offset: 3px;
+}
+
+/* ---------- 4. 页面：组件垂直水平居中 ---------- */
+.page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+/* 卡片容器 */
+.changelog-card {
+    width: 100%;
+    max-width: 620px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 2.5rem 2rem 2rem;
+}
+
+/* ---------- 5. 组件头部 ---------- */
+.changelog-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.changelog-header h1 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.changelog-header p {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+}
+
+/* ---------- 6. 时间轴（核心：Grid 三列 + 定位画线） ---------- */
+.timeline {
+    list-style: none;
+}
+
+/* 每一行：日期 | 中线 | 内容 */
+.timeline li {
+    display: grid;
+    grid-template-columns: 1fr 2rem 1fr;
+    column-gap: 1rem;
+}
+
+/* 日期：右对齐，靠向中线 */
+.date {
+    text-align: right;
+    color: var(--color-muted);
+    font-size: 0.8rem;
+    padding-top: 0.15rem;
+}
+
+/* 中间列：竖线 + 圆点（纯 CSS 定位） */
+.marker {
+    position: relative;
+}
+
+/* 竖线：absolute 定位在中间列中心，贯穿整行 */
+.marker::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    transform: translateX(-50%);
+    background-color: var(--color-line);
+}
+
+/* 圆点：absolute 定位在竖线顶端 */
+.marker::after {
+    content: "";
+    position: absolute;
+    top: 0.4rem;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background-color: var(--color-dot);
+}
+
+/* 最后一条：竖线在圆点处收尾，不再向下延伸 */
+.timeline li:last-child .marker::before {
+    bottom: auto;
+    height: 1rem;
+}
+
+/* 内容：左对齐 */
+.change {
+    font-size: 0.92rem;
+    font-weight: 500;
+    padding-bottom: 1.5rem;
+}
+
+.timeline li:last-child .change {
+    padding-bottom: 0;
+}
+
+/* ---------- 7. 组件底部按钮 ---------- */
+.changelog-footer {
+    text-align: center;
+    margin-top: 1.75rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--color-btn);
+    color: var(--color-btn-text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.7rem 2rem;
+    border-radius: 999px;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* ---------- 8. 响应式：小屏收紧间距与字号 ---------- */
+@media (max-width: 480px) {
+    .changelog-card {
+        padding: 1.75rem 1.25rem 1.5rem;
+    }
+
+    .changelog-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .timeline li {
+        grid-template-columns: 1fr 1.5rem 1.5fr;
+        column-gap: 0.75rem;
+    }
+
+    .date {
+        font-size: 0.72rem;
+    }
+
+    .change {
+        font-size: 0.85rem;
+    }
+}

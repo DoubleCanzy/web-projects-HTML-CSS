@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changelog — Frontend Roadmap Updates</title>
+
+    <!-- ===== SEO 标签 ===== -->
+    <meta name="description" content="A simple, responsive changelog component showing notable updates shipped recently, built with semantic HTML and CSS positioning.">
+    <meta name="author" content="DoubleCanzy">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://doublecanzy.github.io/web-projects-HTML-CSS/Basic/Changelog%20Component/">
+
+    <!-- ===== Open Graph 标签（社交分享用） ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Changelog Component">
+    <meta property="og:description" content="A responsive changelog component with a timeline layout, built with CSS positioning and grid.">
+    <meta property="og:url" content="https://doublecanzy.github.io/web-projects-HTML-CSS/Basic/Changelog%20Component/">
+    <meta property="og:locale" content="en_US">
+
+    <!-- ===== Google Fonts（提升排版） ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- ===== 样式表 ===== -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <main class="page">
+
+        <section class="changelog-card" aria-label="Changelog">
+
+            <!-- 组件头部：标题 + 副标题 -->
+            <header class="changelog-header">
+                <h1>Changelog</h1>
+                <p>Here's everything we have shipped in the past few days</p>
+            </header>
+
+            <!-- 时间轴：日期 | 圆点与竖线 | 更新内容 -->
+            <ol class="timeline">
+                <li>
+                    <span class="date">September 3, 2024</span>
+                    <span class="marker" aria-hidden="true"></span>
+                    <span class="change">Announcing Projects on Frontend Roadmap</span>
+                </li>
+                <li>
+                    <span class="date">August 28, 2024</span>
+                    <span class="marker" aria-hidden="true"></span>
+                    <span class="change">Build your learning habits with learning streaks</span>
+                </li>
+                <li>
+                    <span class="date">August 25, 2024</span>
+                    <span class="marker" aria-hidden="true"></span>
+                    <span class="change">Git and GitHub Roadmap</span>
+                </li>
+                <li>
+                    <span class="date">August 22, 2024</span>
+                    <span class="marker" aria-hidden="true"></span>
+                    <span class="change">Submit your project solution and get feedback</span>
+                </li>
+                <li>
+                    <span class="date">August 15, 2024</span>
+                    <span class="marker" aria-hidden="true"></span>
+                    <span class="change">Backend Project Ideas</span>
+                </li>
+                <li>
+                    <span class="date">August 10, 2024</span>
+                    <span class="marker" aria-hidden="true"></span>
+                    <span class="change">Redis roadmap</span>
+                </li>
+                <li>
+                    <span class="date">August 1, 2024</span>
+                    <span class="marker" aria-hidden="true"></span>
+                    <span class="change">Changelog page to help you stay in the loop</span>
+                </li>
+            </ol>
+
+            <!-- 组件底部：按钮 -->
+            <footer class="changelog-footer">
+                <a class="btn" href="https://roadmap.sh/changelog" target="_blank" rel="noopener">Visit Complete Changelog</a>
+            </footer>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

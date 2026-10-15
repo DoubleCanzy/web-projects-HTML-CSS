@@ -9,6 +9,7 @@ HTML 和 CSS 的学习与练习项目集合。
 │   ├── single-page-cv/ # 单页简历（CV）
 │   ├── Basic HTML Website/ # 多页纯 HTML 网站（导航/SEO/表单）
 │   ├── portfolio-website/ # 响应式作品集网站（Flexbox/媒体查询/深色模式）
+│   ├── Changelog Component/ # 更新日志组件（时间轴/定位/响应式）
 │   └── WORKFLOW.md     # 工作流笔记
 └── practice/           # 进阶练习
     └── 1.视差滚动/      # 视差滚动效果练习
@@ -21,4 +22,5 @@ HTML 和 CSS 的学习与练习项目集合。
 | [single-page-cv](Basic/single-page-cv/) | 单页简历，HTML + CSS 练习 |[Single-Page CV](https://roadmap.sh/projects/single-page-cv)|
 | [Basic HTML Website](Basic/Basic%20HTML%20Website/) | 多页纯 HTML 网站：语义化结构、SEO、表单 |[Basic HTML Website](https://roadmap.sh/projects/basic-html-website)|
 | [portfolio-website](Basic/portfolio-website/) | 响应式作品集网站：Flexbox、媒体查询、深色模式 |[Portfolio Website](https://roadmap.sh/projects/portfolio-website)|
+| [Changelog Component](Basic/Changelog%20Component/) | 更新日志组件：时间轴、CSS 定位、响应式 |[Changelog Component](https://roadmap.sh/projects/changelog-component)|
 | [视差滚动](practice/1.视差滚动/) | Parallax scrolling 视差滚动效果 |------|
