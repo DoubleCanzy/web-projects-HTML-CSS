@@ -1,0 +1,280 @@
+/* ============================================================
+   Datepicker UI · 样式表
+   核心考点：定位（输入框内图标）、Grid 布局（日期网格）、
+   状态样式（今天/选中/相邻月份）
+   ============================================================ */
+
+/* ---------- 1. 设计变量 ---------- */
+:root {
+    color-scheme: light dark;
+
+    /* 颜色 */
+    --color-bg: #f4f5f7;
+    --color-surface: #ffffff;
+    --color-text: #1a1a1a;
+    --color-muted: #6b7280;
+    --color-line: #e5e7eb;
+    --color-primary: #2563eb;
+    --color-on-primary: #ffffff;
+
+    /* 字体 */
+    --font-heading: 'Fraunces', 'Noto Sans SC', Georgia, serif;
+    --font-body: 'Inter', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+
+    /* 其他 */
+    --radius: 16px;
+    --shadow: 0 4px 24px rgb(0 0 0 / 0.08);
+}
+
+/* ---------- 2. 深色模式（跟随系统设置，纯 CSS 实现） ---------- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: #0f1115;
+        --color-surface: #1a1d23;
+        --color-text: #e5e7eb;
+        --color-muted: #9ca3af;
+        --color-line: #2a2e36;
+        --color-primary: #60a5fa;
+        --color-on-primary: #0f172a;
+        --shadow: 0 4px 24px rgb(0 0 0 / 0.5);
+    }
+}
+
+/* ---------- 3. 基础重置 ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+/* 键盘导航焦点可见（无障碍） */
+input:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* ---------- 4. 页面：组件垂直水平居中 ---------- */
+.page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+/* 组件卡片 */
+.datepicker {
+    width: 100%;
+    max-width: 320px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+}
+
+/* ---------- 5. 输入区 ---------- */
+.field label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-muted);
+    margin-bottom: 0.375rem;
+}
+
+.input-wrap {
+    position: relative; /* 为内部图标按钮提供定位基准（定位考点） */
+}
+
+.input-wrap input {
+    width: 100%;
+    font: inherit;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+    padding: 0.625rem 2.75rem 0.625rem 0.875rem;
+    cursor: default;
+}
+
+/* 日历图标按钮：absolute 定位在输入框内右侧，垂直居中 */
+.icon-btn {
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    color: var(--color-muted);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.icon-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.icon-btn:hover {
+    color: var(--color-primary);
+}
+
+/* ---------- 6. 日历面板 ---------- */
+.calendar {
+    margin-top: 1.25rem;
+    border-top: 1px solid var(--color-line);
+    padding-top: 1.25rem;
+}
+
+/* 面板头部：上月按钮 / 标题 / 下月按钮（Flexbox） */
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.calendar-header h2 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.calendar-header h2 span {
+    color: var(--color-muted);
+}
+
+.nav-btn {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    color: var(--color-muted);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.nav-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.nav-btn:hover {
+    color: var(--color-primary);
+}
+
+/* ---------- 7. 星期表头与日期网格（Grid 考点） ---------- */
+.weekdays,
+.dates {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.weekdays {
+    margin-bottom: 0.375rem;
+}
+
+.weekdays li {
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-muted);
+    padding: 0.25rem 0;
+}
+
+/* 每个日期：圆形格子，flex 居中 */
+.dates li {
+    justify-self: center;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    cursor: default;
+    transition: background-color 0.15s;
+}
+
+/* 相邻月份的日期：变淡 */
+.dates li.other {
+    color: var(--color-muted);
+    opacity: 0.5;
+}
+
+/* 今天：环形描边高亮 */
+.dates li.today {
+    box-shadow: inset 0 0 0 1.5px var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* 选中日期：实心圆 + 投影 */
+.dates li.selected {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgb(37 99 235 / 0.35);
+}
+
+.dates li:not(.selected):hover {
+    background-color: var(--color-bg);
+}
+
+/* ---------- 8. 面板底部 ---------- */
+.calendar-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.875rem;
+}
+
+.keyboard-btn {
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text);
+    background: none;
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    padding: 0.375rem 0.875rem;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.keyboard-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* ---------- 9. 响应式：小屏收紧 ---------- */
+@media (max-width: 480px) {
+    .datepicker {
+        padding: 1.25rem;
+    }
+
+    .dates li {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+}

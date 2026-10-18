@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datepicker UI — 纯 CSS 日历选择器</title>
+
+    <!-- ===== SEO 标签 ===== -->
+    <meta name="description" content="纯 HTML + CSS 实现的静态日期选择器 UI 组件：输入框、日历图标、月份切换、日期网格与选中态。">
+    <meta name="author" content="DoubleCanzy">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://doublecanzy.github.io/web-projects-HTML-CSS/Basic/Datepicker%20UI/">
+
+    <!-- ===== Open Graph 标签（社交分享用） ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Datepicker UI — 纯 CSS 日历选择器">
+    <meta property="og:description" content="纯 HTML + CSS 实现的静态日期选择器 UI 组件。">
+    <meta property="og:url" content="https://doublecanzy.github.io/web-projects-HTML-CSS/Basic/Datepicker%20UI/">
+    <meta property="og:locale" content="zh_CN">
+
+    <!-- ===== Google Fonts（提升排版） ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- ===== 样式表 ===== -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <main class="page">
+
+        <section class="datepicker" aria-label="日期选择器 UI 演示">
+
+            <!-- 输入区：标签 + 输入框 + 日历图标按钮 -->
+            <div class="field">
+                <label for="checkin">Check in date</label>
+                <div class="input-wrap">
+                    <input id="checkin" type="text" value="2026-10-24" readonly>
+                    <!-- 日历图标按钮：absolute 定位在输入框右侧（定位考点） -->
+                    <button class="icon-btn" type="button" aria-label="打开日历">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="3" y="4" width="18" height="18" rx="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 日历面板 -->
+            <div class="calendar">
+
+                <!-- 面板头部：上月 / 月份标题 / 下月 -->
+                <header class="calendar-header">
+                    <button class="nav-btn" type="button" aria-label="上个月">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="15 18 9 12 15 6"/>
+                        </svg>
+                    </button>
+                    <h2>October <span>2026</span></h2>
+                    <button class="nav-btn" type="button" aria-label="下个月">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="9 18 15 12 9 6"/>
+                        </svg>
+                    </button>
+                </header>
+
+                <!-- 星期表头：7 列 Grid -->
+                <ol class="weekdays" aria-hidden="true">
+                    <li>Su</li><li>Mo</li><li>Tu</li><li>We</li><li>Th</li><li>Fr</li><li>Sa</li>
+                </ol>
+
+                <!-- 日期网格：7 列 Grid，42 格（含上月 4 天与下月 7 天） -->
+                <ol class="dates">
+                    <li class="other">27</li>
+                    <li class="other">28</li>
+                    <li class="other">29</li>
+                    <li class="other">30</li>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                    <li>11</li>
+                    <li>12</li>
+                    <li>13</li>
+                    <li>14</li>
+                    <li>15</li>
+                    <li>16</li>
+                    <li>17</li>
+                    <!-- 今天：18 号（环形描边高亮） -->
+                    <li class="today">18</li>
+                    <li>19</li>
+                    <li>20</li>
+                    <li>21</li>
+                    <li>22</li>
+                    <li>23</li>
+                    <!-- 选中日期：24 号（实心圆） -->
+                    <li class="selected">24</li>
+                    <li>25</li>
+                    <li>26</li>
+                    <li>27</li>
+                    <li>28</li>
+                    <li>29</li>
+                    <li>30</li>
+                    <li>31</li>
+                    <li class="other">1</li>
+                    <li class="other">2</li>
+                    <li class="other">3</li>
+                    <li class="other">4</li>
+                    <li class="other">5</li>
+                    <li class="other">6</li>
+                    <li class="other">7</li>
+                </ol>
+
+                <!-- 面板底部：Keyboard 按钮 -->
+                <footer class="calendar-footer">
+                    <button class="keyboard-btn" type="button">Keyboard</button>
+                </footer>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
