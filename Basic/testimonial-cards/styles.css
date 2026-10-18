@@ -1,0 +1,244 @@
+/* ============================================================
+   Testimonial Cards · 样式表
+   核心考点：定位（气泡尾巴、头像堆叠）与 Flex/Grid 布局
+   ============================================================ */
+
+/* ---------- 1. 设计变量 ---------- */
+:root {
+    color-scheme: light dark;
+
+    /* 颜色 */
+    --color-bg: #f4f5f7;
+    --color-surface: #ffffff;
+    --color-text: #1a1a1a;
+    --color-muted: #6b7280;
+    --color-line: #e5e7eb;
+    --color-star: #f59e0b;
+    --color-bubble: #111111;
+    --color-bubble-text: #ffffff;
+
+    /* 字体 */
+    --font-heading: 'Fraunces', 'Noto Sans SC', Georgia, serif;
+    --font-body: 'Inter', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+
+    /* 其他 */
+    --radius: 16px;
+    --shadow: 0 4px 24px rgb(0 0 0 / 0.08);
+}
+
+/* ---------- 2. 深色模式（跟随系统设置，纯 CSS 实现） ---------- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: #0f1115;
+        --color-surface: #1a1d23;
+        --color-text: #e5e7eb;
+        --color-muted: #9ca3af;
+        --color-line: #2a2e36;
+        --color-bubble: #f4f5f7;
+        --color-bubble-text: #111111;
+        --shadow: 0 4px 24px rgb(0 0 0 / 0.5);
+    }
+}
+
+/* ---------- 3. 基础重置 ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* ---------- 4. 页面与组件头部 ---------- */
+.page {
+    padding: 3rem 1rem;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.page-header h1 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    margin-bottom: 0.25rem;
+}
+
+.page-header p {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+}
+
+/* ---------- 5. 整体布局：两列 Grid ---------- */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ---------- 6. 卡片通用 ---------- */
+.card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    /* 每张卡片顶部用成员代表色描边 */
+    border-top: 4px solid var(--accent, var(--color-line));
+}
+
+.card--blue   { --accent: #3b82f6; } /* 예준 蓝 */
+.card--purple { --accent: #8b5cf6; } /* 노아 紫 */
+.card--pink   { --accent: #ec4899; } /* 밤비 粉 */
+.card--red    { --accent: #ef4444; } /* 은호 红 */
+.card--black  { --accent: #374151; } /* 하민 黑 */
+
+/* ---------- 7. 气泡卡（定位考点：气泡尾巴） ---------- */
+.bubble {
+    background-color: var(--color-bubble);
+    color: var(--color-bubble-text);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    font-size: 0.95rem;
+    position: relative;
+}
+
+/* 气泡尾巴：absolute 定位的三角形，指向下方作者 */
+.bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 32px;
+    border-style: solid;
+    border-width: 12px 12px 0 12px;
+    border-color: var(--color-bubble) transparent transparent transparent;
+}
+
+/* 作者信息行（Flexbox） */
+.author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.author img {
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.author-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.author-role {
+    color: var(--color-muted);
+    font-size: 0.8rem;
+}
+
+/* ---------- 8. 照片 + 星级卡 ---------- */
+.photo-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.portrait {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+}
+
+.photo-card-body {
+    padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.name-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.name-row h2 {
+    font-size: 1.15rem;
+}
+
+.name-row .title {
+    color: var(--color-muted);
+    font-size: 0.8rem;
+}
+
+.stars {
+    color: var(--color-star);
+    letter-spacing: 0.2em;
+    margin: 0.35rem 0 0.75rem;
+}
+
+/* ---------- 9. 通用引用文字 ---------- */
+.quote {
+    font-size: 0.95rem;
+}
+
+.mini-card .quote {
+    font-size: 0.92rem;
+}
+
+.author-inline {
+    margin-top: 1.25rem;
+}
+
+/* ---------- 10. 头像墙（定位考点：头像堆叠） ---------- */
+.thumb-row {
+    display: flex;
+    margin: 1.25rem 0 0.25rem;
+}
+
+.thumb-row img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 3px solid var(--color-surface);
+    flex-shrink: 0;
+}
+
+/* 负外边距：让头像相互重叠，像一摞叠起来的名片 */
+.thumb-row img + img {
+    margin-left: -14px;
+}
+
+/* ---------- 11. 响应式：窄屏变单列 ---------- */
+@media (max-width: 760px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-header h1 {
+        font-size: 1.7rem;
+    }
+}

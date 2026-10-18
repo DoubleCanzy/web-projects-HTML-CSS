@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>粉丝真心话 — PLAVE 成员评价墙</title>
+
+    <!-- ===== SEO 标签 ===== -->
+    <meta name="description" content="PLAVE 粉丝 PLLI 对五位成员（예준/노아/밤비/은호/하민）的真心话评价：队长主唱、主舞、主 rap 与忙内的魅力。">
+    <meta name="author" content="DoubleCanzy">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://doublecanzy.github.io/web-projects-HTML-CSS/Basic/testimonial-cards/">
+
+    <!-- ===== Open Graph 标签（社交分享用） ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="粉丝真心话 — PLAVE 成员评价墙">
+    <meta property="og:description" content="PLAVE 粉丝 PLLI 对五位成员的真心话评价。">
+    <meta property="og:url" content="https://doublecanzy.github.io/web-projects-HTML-CSS/Basic/testimonial-cards/">
+    <meta property="og:locale" content="zh_CN">
+
+    <!-- ===== Google Fonts（提升排版） ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- ===== 样式表 ===== -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <main class="page">
+        <div class="container">
+
+            <!-- 组件头部 -->
+            <header class="page-header">
+                <h1>粉丝真心话</h1>
+                <p>来自 PLAVE 粉丝 PLLI 的真实评价</p>
+            </header>
+
+            <div class="grid">
+
+                <!-- 左列：气泡卡 + 两张迷你卡 -->
+                <div class="col">
+
+                    <!-- 卡片 1：语音气泡卡（定位考点：气泡尾巴） -->
+                    <article class="card bubble-card card--blue">
+                        <blockquote class="bubble">
+                            <p>作为 PLAVE 的队长和主唱，예준 不只是唱歌——词曲创作和制作都有他参与。他是 VLAST 的第一位练习生，亲手把 Noah 和 Eunho 带进团队。队长的声音，就是让人安心的理由。💙</p>
+                        </blockquote>
+                        <div class="author">
+                            <img src="avatar-yejun.svg" alt="Yejun 头像" width="44" height="44">
+                            <div>
+                                <p class="author-name">敏智 Minji</p>
+                                <p class="author-role">PLLI · 出道粉</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 卡片 2：迷你引用卡 — 밤비 -->
+                    <article class="card mini-card card--pink">
+                        <p class="quote">밤비 能把每一支编舞变成故事。我们的主舞不只跳舞，他亲自设计动作——还有他对平壤冷面的热爱，可爱又真实。🦌</p>
+                        <div class="author author-inline">
+                            <img src="avatar-bamby.svg" alt="Bamby 头像" width="40" height="40">
+                            <div>
+                                <p class="author-name">지원 Jiwon</p>
+                                <p class="author-role">PLLI · 主舞粉</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 卡片 3：迷你引用卡 — 하민 -->
+                    <article class="card mini-card card--black">
+                        <p class="quote">하민 是队里的忙内，却有跆拳道黑带四段——跳舞和编舞两手抓，舞台上像只黑猫一样灵动。🖤</p>
+                        <div class="author author-inline">
+                            <img src="avatar-hamin.svg" alt="Hamin 头像" width="40" height="40">
+                            <div>
+                                <p class="author-name">书妍 Seoyeon</p>
+                                <p class="author-role">PLLI · 忙内粉</p>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- 右列：照片卡 + 头像墙卡 -->
+                <div class="col">
+
+                    <!-- 卡片 4：照片 + 星级卡 — 노아 -->
+                    <article class="card photo-card card--purple">
+                        <img class="portrait" src="portrait-noah.svg" alt="Noah 肖像">
+                        <div class="photo-card-body">
+                            <div class="name-row">
+                                <h2>노아 Noah</h2>
+                                <p class="title">Main Vocalist · Producer</p>
+                            </div>
+                            <p class="stars" aria-label="五星满分">★★★★★</p>
+                            <p class="quote">노아 的嗓音是我入坑 PLAVE 的理由。主唱、制作人，还是健身狂魔——他对待举铁和对待主打歌一样认真。💜</p>
+                        </div>
+                    </article>
+
+                    <!-- 卡片 5：头像墙卡（定位考点：头像堆叠） — 은호 -->
+                    <article class="card gallery-card card--red">
+                        <p class="quote">은호 的 rap 很燃，但更打动我的是他写词的样子——作为主 rapper 兼制作人，他把舞台上的"狼性"全写进了歌里。❤️</p>
+                        <div class="thumb-row">
+                            <img src="avatar-yejun.svg" alt="Yejun">
+                            <img src="avatar-noah.svg" alt="Noah">
+                            <img src="avatar-bamby.svg" alt="Bamby">
+                            <img src="avatar-eunho.svg" alt="Eunho">
+                            <img src="avatar-hamin.svg" alt="Hamin">
+                        </div>
+                        <div class="author author-inline">
+                            <img src="avatar-eunho.svg" alt="Eunho 头像" width="40" height="40">
+                            <div>
+                                <p class="author-name">하나 Hana</p>
+                                <p class="author-role">PLLI · rap 粉</p>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>

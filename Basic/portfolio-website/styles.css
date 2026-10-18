@@ -53,12 +53,20 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* 盒模型：width/height 包含 padding 和 border */
+    box-sizing: border-box; 
+    /* 让元素设置的 width 和 height 包含内边距（padding）和边框（border），而不是只计算内容区域的大小。但是它不会自动改变 margin 的计算方式，外边距仍然位于盒子外部。
+    content-box	仅内容区域的宽度 */
 }
 
 html {
     scroll-behavior: smooth;
 }
+/* ---------- 
+    页面会逐渐移动到目标位置，形成自然的滚动动画：smooth 
+    仅在支持的浏览器生效（Chrome、Edge、Firefox、Safari） 
+    页面瞬间跳到目标位置，几乎没有过渡动画：scroll-behavior: auto;
+    ---------- */
+
 
 body {
     font-family: var(--font-body);
