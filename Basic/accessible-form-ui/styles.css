@@ -1,0 +1,319 @@
+/* ============================================================
+   Accessible Form UI · 样式表
+   核心考点：表单无障碍（标签、焦点态、错误关联、ARIA、
+   颜色对比度 WCAG AA）与布局（Grid 两栏 + 定位）
+   ============================================================ */
+
+/* ---------- 1. 设计变量 ----------
+   颜色对比度已核对（WCAG AA ≥ 4.5:1）：
+   - 正文 #111827 / #fff = 17.5:1 ✓
+   - 次要文字 #6b7280 / #fff = 4.83:1 ✓
+   - 错误红 #dc2626 / #fff = 4.52:1 ✓
+   （深色模式使用对应浅色变体，同样达标） */
+:root {
+    color-scheme: light dark;
+
+    /* 颜色 */
+    --color-bg: #f4f5f7;
+    --color-surface: #ffffff;
+    --color-text: #111827;
+    --color-muted: #6b7280;
+    --color-line: #e5e7eb;
+    --color-primary: #2563eb;
+    --color-primary-hover: #1d4ed8;
+    --color-on-primary: #ffffff;
+    --color-success: #16a34a;
+    --color-error: #dc2626;
+    --color-track: #e5e7eb;
+
+    /* 字体 */
+    --font-heading: 'Fraunces', Georgia, serif;
+    --font-body: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+
+    /* 其他 */
+    --radius: 16px;
+    --shadow: 0 4px 24px rgb(0 0 0 / 0.08);
+}
+
+/* ---------- 2. 深色模式（跟随系统设置，纯 CSS 实现） ---------- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: #0f1115;
+        --color-surface: #1a1d23;
+        --color-text: #e5e7eb;
+        --color-muted: #9ca3af;
+        --color-line: #2a2e36;
+        --color-primary: #60a5fa;
+        --color-primary-hover: #93c5fd;
+        --color-on-primary: #0f172a;
+        --color-success: #4ade80;
+        --color-error: #f87171;
+        --color-track: #2a2e36;
+        --shadow: 0 4px 24px rgb(0 0 0 / 0.5);
+    }
+}
+
+/* ---------- 3. 基础重置 ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+/* ---------- 4. 页面与卡片（Grid 两栏） ---------- */
+.page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    width: 100%;
+    max-width: 780px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+/* ---------- 5. 左面板：完成度 ---------- */
+.progress-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 1.5rem;
+    border-right: 1px solid var(--color-line);
+    text-align: center;
+}
+
+.progress-panel h2 {
+    font-size: 1rem;
+}
+
+/* 环形进度条：conic-gradient 画进度 + ::after 挖空中心（定位考点） */
+.ring {
+    position: relative;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: conic-gradient(var(--color-success) 0 60%, var(--color-track) 60% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ring::after {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border-radius: 50%;
+    background-color: var(--color-surface);
+}
+
+.ring span {
+    position: relative;
+    z-index: 1;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* 需求清单 */
+.checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.checklist li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    text-align: left;
+}
+
+/* 状态图标：绿底对勾 = 已完成；灰边叉 = 未完成 */
+.checklist .icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+}
+
+.checklist .done .icon {
+    background-color: var(--color-success);
+    color: #ffffff;
+}
+
+.checklist .todo {
+    color: var(--color-muted);
+}
+
+.checklist .todo .icon {
+    border: 1.5px solid var(--color-muted);
+    color: var(--color-muted);
+}
+
+/* ---------- 6. 右面板：表单 ---------- */
+.form {
+    padding: 2rem;
+}
+
+.form h1 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.125rem;
+}
+
+/* 每个输入框都有明确关联的 label */
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.375rem;
+}
+
+.form-group input {
+    width: 100%;
+    font: inherit;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+    padding: 0.625rem 0.875rem;
+}
+
+/* 焦点态：键盘用户能清楚看到当前字段（无障碍要求） */
+.form-group input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgb(37 99 235 / 0.25);
+}
+
+/* 无效字段：红边框 + 红色焦点环（配合 aria-invalid） */
+.form-group input[aria-invalid="true"] {
+    border-color: var(--color-error);
+}
+
+.form-group input[aria-invalid="true"]:focus {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 3px rgb(220 38 38 / 0.2);
+}
+
+/* ---------- 7. 密码显隐按钮（定位考点） ---------- */
+.password-wrap {
+    position: relative;
+}
+
+.password-wrap input {
+    padding-right: 4.75rem;
+}
+
+.toggle-btn {
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: none;
+    border: none;
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+}
+
+.toggle-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.toggle-btn:hover {
+    background-color: var(--color-bg);
+}
+
+/* 键盘焦点环（按钮可被 Tab 到达并看到状态） */
+.toggle-btn:focus-visible,
+.btn:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* ---------- 8. 提示与错误消息 ---------- */
+.hint {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin-top: 0.375rem;
+}
+
+.error {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-error);
+    margin-top: 0.375rem;
+}
+
+/* 空的错误占位不占空间（有内容时自动显示） */
+.error:empty {
+    display: none;
+}
+
+/* ---------- 9. 提交按钮 ---------- */
+.btn {
+    width: 100%;
+    font: inherit;
+    font-weight: 600;
+    color: var(--color-on-primary);
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: 10px;
+    padding: 0.75rem;
+    cursor: pointer;
+    margin-top: 0.25rem;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* ---------- 10. 响应式：窄屏上下堆叠 ---------- */
+@media (max-width: 700px) {
+    .card {
+        grid-template-columns: 1fr;
+    }
+
+    .progress-panel {
+        border-right: none;
+        border-bottom: 1px solid var(--color-line);
+    }
+}

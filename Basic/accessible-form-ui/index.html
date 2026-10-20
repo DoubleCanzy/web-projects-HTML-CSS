@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account — Accessible Form UI</title>
+
+    <!-- ===== SEO 标签 ===== -->
+    <meta name="description" content="Accessible form UI built with HTML and CSS: labeled fields, visible focus states, ARIA attributes, password visibility toggle and profile completeness indicator.">
+    <meta name="author" content="DoubleCanzy">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://doublecanzy.github.io/web-projects-HTML-CSS/Basic/accessible-form-ui/">
+
+    <!-- ===== Open Graph 标签（社交分享用） ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Create Account — Accessible Form UI">
+    <meta property="og:description" content="A WCAG-friendly form UI with labeled fields, focus states and ARIA attributes.">
+    <meta property="og:url" content="https://doublecanzy.github.io/web-projects-HTML-CSS/Basic/accessible-form-ui/">
+    <meta property="og:locale" content="en_US">
+
+    <!-- ===== Google Fonts（提升排版） ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- ===== 样式表 ===== -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <main class="page">
+
+        <section class="card">
+
+            <!-- ===== 左面板：完成度 ===== -->
+            <!-- aria-live：进度更新时屏幕阅读器会播报 -->
+            <aside class="progress-panel" aria-live="polite">
+
+                <!-- 环形进度条：role="progressbar" 让屏幕阅读器能读出 60% -->
+                <div class="ring" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60" aria-label="Profile completeness">
+                    <span>60%</span>
+                </div>
+
+                <h2>Profile Completeness</h2>
+
+                <ul class="checklist">
+                    <li class="done"><span class="icon" aria-hidden="true">✓</span>Name</li>
+                    <li class="done"><span class="icon" aria-hidden="true">✓</span>Email</li>
+                    <li class="done"><span class="icon" aria-hidden="true">✓</span>Profile Photo</li>
+                    <li class="todo"><span class="icon" aria-hidden="true">✗</span>Password</li>
+                    <li class="todo"><span class="icon" aria-hidden="true">✗</span>Confirm Password</li>
+                </ul>
+
+            </aside>
+
+            <!-- ===== 右面板：表单 ===== -->
+            <form class="form" action="#" method="post">
+
+                <h1>Create Account</h1>
+
+                <!-- 全名 -->
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" value="John Doe"
+                           autocomplete="name" required aria-required="true"
+                           aria-describedby="fullname-error">
+                    <!-- 错误消息占位：与输入框通过 aria-describedby 关联 -->
+                    <p class="error" id="fullname-error"></p>
+                </div>
+
+                <!-- 邮箱 -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" value="john@example.com"
+                           autocomplete="email" required aria-required="true"
+                           aria-describedby="email-error">
+                    <p class="error" id="email-error"></p>
+                </div>
+
+                <!-- 密码 -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-wrap">
+                        <input type="password" id="password" name="password" value="password123"
+                               autocomplete="new-password" required aria-required="true"
+                               aria-describedby="password-hint password-error">
+                        <!-- 显隐切换按钮：aria-label 告知屏幕阅读器当前状态 -->
+                        <button type="button" class="toggle-btn"
+                                aria-label="Show password" aria-pressed="false" aria-controls="password">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            <span>Show</span>
+                        </button>
+                    </div>
+                    <p class="hint" id="password-hint">At least 8 characters, with letters and numbers.</p>
+                    <p class="error" id="password-error"></p>
+                </div>
+
+                <!-- 确认密码（演示错误状态：aria-invalid + 错误消息） -->
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <div class="password-wrap">
+                        <input type="password" id="confirm-password" name="confirm-password"
+                               autocomplete="new-password" required aria-required="true"
+                               aria-invalid="true" aria-describedby="confirm-password-error">
+                        <button type="button" class="toggle-btn"
+                                aria-label="Show password" aria-pressed="false" aria-controls="confirm-password">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            <span>Show</span>
+                        </button>
+                    </div>
+                    <!-- 错误消息与输入框关联（aria-describedby），aria-invalid 标记无效字段 -->
+                    <p class="error" id="confirm-password-error">Passwords do not match.</p>
+                </div>
+
+                <button class="btn" type="submit">Register</button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
