@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Grid — CSS Grid 照片墙</title>
+
+    <!-- ===== SEO 标签 ===== -->
+    <meta name="description" content="用 CSS Grid 实现的响应式照片网格：一张高图跨两行、一张全景图跨三列、四张常规图填充，断点自动调整列数。">
+    <meta name="author" content="DoubleCanzy">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://doublecanzy.github.io/web-projects-HTML-CSS/Basic/image-grid/">
+
+    <!-- ===== Open Graph 标签（社交分享用） ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Image Grid — CSS Grid 照片墙">
+    <meta property="og:description" content="CSS Grid 响应式照片网格布局练习。">
+    <meta property="og:url" content="https://doublecanzy.github.io/web-projects-HTML-CSS/Basic/image-grid/">
+    <meta property="og:locale" content="zh_CN">
+
+    <!-- ===== Google Fonts（提升排版） ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- ===== 样式表 ===== -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <main class="page">
+        <div class="container">
+
+            <header class="page-header">
+                <h1>Image Grid</h1>
+                <p>六张照片 · CSS Grid 响应式布局</p>
+            </header>
+
+            <!-- ===== 照片网格 =====
+                 布局（对应 mockup）：
+                 [ 高图×2行 ][ 图 ][ 图 ]
+                 [ 高图延续 ][ 图 ][ 图 ]
+                 [   全景图 ×3列   ]        -->
+            <section class="grid" aria-label="照片网格">
+
+                <!-- 1. 左侧高图：跨 2 行 -->
+                <figure class="grid-item item--tall">
+                    <img src="images/d17d1309ly1h3q3dkv4cwj218g1mxqae.jpg" alt="图库照片 1（竖版，跨两行展示）" loading="lazy">
+                </figure>
+
+                <!-- 2-5. 常规四张：自动填充右侧 2×2 -->
+                <figure class="grid-item">
+                    <img src="images/28786764b0cbb8ff72ec18078a40a510.jpg" alt="图库照片 2（竖版）" loading="lazy">
+                </figure>
+
+                <figure class="grid-item">
+                    <img src="images/53885982_p20_master1200.jpg" alt="图库照片 3（方版）" loading="lazy">
+                </figure>
+
+                <figure class="grid-item">
+                    <img src="images/黑箱11.1独子单人.png" alt="图库照片 4（竖版）" loading="lazy">
+                </figure>
+
+                <figure class="grid-item">
+                    <img src="images/黑箱10.16独子单人.jpg" alt="图库照片 5（横版）" loading="lazy">
+                </figure>
+
+                <!-- 6. 底部全景图：跨满 3 列 -->
+                <figure class="grid-item item--wide">
+                    <img src="images/0076YaM6gy1hgysirnl7vj314r0m8b29562.png" alt="图库照片 6（全景，跨三列展示）" loading="lazy">
+                </figure>
+
+            </section>
+
+        </div>
+    </main>
+
+</body>
+</html>
