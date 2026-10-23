@@ -14,6 +14,8 @@ HTML 和 CSS 的学习与练习项目集合。
 │   ├── Datepicker UI/ # 日期选择器 UI（纯 CSS：定位/日期网格）
 │   ├── accessible-form-ui/ # 无障碍表单（ARIA/焦点态/对比度）
 │   ├── image-grid/ # 照片网格（CSS Grid 跨行跨列/响应式）
+│   ├── tooltip-ui/ # 导航气泡提示（定位/hover/五种动画）
+│   ├── pricing-comparison-table/ # 订阅方案对比表（语义化表格/无障碍）
 │   └── WORKFLOW.md     # 工作流笔记
 └── practice/           # 进阶练习
     └── 1.视差滚动/      # 视差滚动效果练习
@@ -31,4 +33,6 @@ HTML 和 CSS 的学习与练习项目集合。
 | [Datepicker UI](Basic/Datepicker%20UI/) | 日期选择器 UI：纯 CSS 定位与日期网格 |[Datepicker UI](https://roadmap.sh/projects/datepicker-ui)|
 | [accessible-form-ui](Basic/accessible-form-ui/) | 无障碍表单：ARIA、焦点态、WCAG 对比度 |[Accessible Form UI](https://roadmap.sh/projects/accessible-form-ui)|
 | [image-grid](Basic/image-grid/) | 照片网格：CSS Grid 跨行跨列、响应式断点 |[Image Grid](https://roadmap.sh/projects/image-grid)|
+| [tooltip-ui](Basic/tooltip-ui/) | 导航气泡提示：定位、hover、五种入场动画 |[Tooltip UI](https://roadmap.sh/projects/tooltip-ui)|
+| [pricing-comparison-table](Basic/pricing-comparison-table/) | 订阅方案对比表：语义化 table、scope、colspan |[Pricing Comparison Table](https://roadmap.sh/projects/pricing-comparison-table)|
 | [视差滚动](practice/1.视差滚动/) | Parallax scrolling 视差滚动效果 |------|
