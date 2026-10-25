@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>语义化 HTML：写给刚开始写网页的你 — 张三的博客</title>
+
+    <!-- ===== SEO 标签 ===== -->
+    <meta name="description" content="为什么应该用 header、main、article 等语义标签而不是满屏的 div？本文从屏幕阅读器、搜索引擎和代码维护三个角度，讲清楚语义化 HTML 的价值与常见误区。">
+    <meta name="author" content="张三">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://doublecanzy.github.io/web-projects-HTML-CSS/Basic/blog-post-page/">
+
+    <!-- ===== Open Graph 标签（社交分享用） ===== -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="语义化 HTML：写给刚开始写网页的你">
+    <meta property="og:description" content="语义标签不只是「规范」——它们同时服务于屏幕阅读器、搜索引擎和未来的你。">
+    <meta property="og:url" content="https://doublecanzy.github.io/web-projects-HTML-CSS/Basic/blog-post-page/">
+    <meta property="og:locale" content="zh_CN">
+
+    <!-- 注意：本页按项目要求不做任何样式，仅结构 -->
+</head>
+<body>
+
+    <!-- ===== 站点头部：站名 + 主导航 ===== -->
+    <header>
+        <p>张三的博客</p>
+
+        <nav aria-label="主导航">
+            <ul>
+                <li><a href="../portfolio-website/index.html">回到个人主页</a></li>
+                <li><a href="../portfolio-website/projects.html">浏览我的项目</a></li>
+                <li><a href="../portfolio-website/articles.html">更多文章</a></li>
+                <li><a href="../portfolio-website/contact.html">联系我</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ===== 单篇博客文章 ===== -->
+        <article>
+
+            <h1>语义化 HTML：写给刚开始写网页的你</h1>
+
+            <p>刚开始写网页的时候，我们常常会用 <code>&lt;div&gt;</code> 搭出整个页面：导航是 <code>&lt;div&gt;</code>，文章是 <code>&lt;div&gt;</code>，版权栏还是 <code>&lt;div&gt;</code>。页面看起来没错，但浏览器之外的"读者"却什么都读不懂。</p>
+
+            <h2>什么是语义标签</h2>
+
+            <p>语义标签就是那些<strong>自带含义</strong>的元素——标签名本身就说明了它是页面里的哪一部分。常用的有：</p>
+
+            <ul>
+                <li><code>&lt;header&gt;</code>：页头或区块头，放站名、导航</li>
+                <li><code>&lt;nav&gt;</code>：导航区域</li>
+                <li><code>&lt;main&gt;</code>：页面主要内容，一页只应有一个</li>
+                <li><code>&lt;article&gt;</code>：一篇可以独立分发的完整内容</li>
+                <li><code>&lt;section&gt;</code>：文章内的主题分区</li>
+                <li><code>&lt;footer&gt;</code>：页脚或区块脚，放版权、联系信息</li>
+            </ul>
+
+            <h2>语义化对谁重要</h2>
+
+            <p>语义标签<em>不是</em>可有可无的装饰，它同时服务于三类读者：</p>
+
+            <ol>
+                <li><strong>屏幕阅读器用户</strong>：视障用户靠读屏软件"听"网页。有了 <code>&lt;nav&gt;</code>，他们可以一键跳到导航；有了 <code>&lt;article&gt;</code>，他们可以跳过页头直接听正文。</li>
+                <li><strong>搜索引擎爬虫</strong>：爬虫没有眼睛，只能读标签结构。结构清晰的页面更容易被理解、被收录，排名也会受益。</li>
+                <li><strong>未来的你</strong>：三个月后回来看代码，<code>&lt;footer&gt;</code> 比"第五个 <code>&lt;div&gt;</code>"好懂一百倍。</li>
+            </ol>
+
+            <h2>一个常见误区：div 不是不能用</h2>
+
+            <p>语义化不等于彻底消灭 <code>&lt;div&gt;</code>。<code>&lt;div&gt;</code> 是没有含义的通用容器，当你找不到合适语义标签时，用它反而更诚实。W3C 规范里有一句被反复引用的话：</p>
+
+            <blockquote>
+                <p>Authors are strongly encouraged to view the div element as an element of last resort, for when no other element is suitable.</p>
+                <cite>— <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">W3C HTML 规范：div 元素章节</a></cite>
+            </blockquote>
+
+            <p>翻译过来：<em>请把 div 当作最后的备选</em>——只有当没有其他元素合适时才使用它。</p>
+
+            <h2>动手改造：同一页面的两种写法</h2>
+
+            <p>下面是一个页面骨架的对比。先用 <code>&lt;div&gt;</code> 写：</p>
+
+            <pre><code>&lt;body&gt;
+    &lt;div id="top"&gt;导航&lt;/div&gt;
+    &lt;div id="content"&gt;正文&lt;/div&gt;
+    &lt;div id="bottom"&gt;版权&lt;/div&gt;
+&lt;/body&gt;</code></pre>
+
+            <p>再用语义标签写同样的结构：</p>
+
+            <pre><code>&lt;body&gt;
+    &lt;header&gt;
+        &lt;nav&gt;导航&lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;article&gt;正文&lt;/article&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;版权&lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+
+            <p>改完之后的页面结构长这样：</p>
+
+            <figure>
+                <img src="page-structure.svg" alt="语义化页面结构示意图：顶部 header 区块包含 nav，中间 main 区块包含 article 正文，底部 footer 区块">
+                <figcaption>图 1：用语义标签重写后的页面结构示意</figcaption>
+            </figure>
+
+            <h2>总结</h2>
+
+            <p>语义化 HTML 不是玄学，就是<strong>用对的标签做对的事</strong>：</p>
+
+            <ul>
+                <li>页面骨架用 <code>&lt;header&gt;</code>、<code>&lt;main&gt;</code>、<code>&lt;footer&gt;</code></li>
+                <li>独立内容用 <code>&lt;article&gt;</code>，主题分区用 <code>&lt;section&gt;</code></li>
+                <li>引用别人说的话用 <code>&lt;blockquote&gt;</code> + <code>&lt;cite&gt;</code></li>
+                <li>找不到合适标签时才用 <code>&lt;div&gt;</code></li>
+            </ul>
+
+            <p>想查某个标签怎么用，最可靠的参考是 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element">MDN 的 HTML 元素参考</a>；想系统了解标签的取舍，可以读 <a href="https://html.spec.whatwg.org/multipage/sections.html">W3C 规范的分区章节</a>。</p>
+
+        </article>
+
+    </main>
+
+    <!-- ===== 站点页脚 ===== -->
+    <footer>
+        <p>© 2026 张三的博客 · 保留所有权利</p>
+    </footer>
+
+</body>
+</html>

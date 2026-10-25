@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 440" font-family="Arial, 'Microsoft YaHei', sans-serif">
+  <rect width="600" height="440" fill="#f8fafc"/>
+
+  <!-- header 区块 -->
+  <rect x="20" y="20" width="560" height="90" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="40" y="55" font-size="18" font-weight="bold" fill="#1e3a8a">&lt;header&gt;</text>
+  <rect x="40" y="65" width="240" height="30" rx="6" fill="#93c5fd"/>
+  <text x="50" y="85" font-size="14" fill="#1e3a8a">&lt;nav&gt; 导航</text>
+
+  <!-- main 区块 -->
+  <rect x="20" y="120" width="560" height="220" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="40" y="155" font-size="18" font-weight="bold" fill="#14532d">&lt;main&gt;</text>
+
+  <!-- article 区块 -->
+  <rect x="40" y="170" width="520" height="150" rx="8" fill="#bbf7d0" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="60" y="205" font-size="18" font-weight="bold" fill="#14532d">&lt;article&gt;</text>
+  <text x="60" y="240" font-size="14" fill="#166534">正文内容：段落、列表、代码、图片……</text>
+  <text x="60" y="265" font-size="14" fill="#166534">（一篇可独立分发的内容）</text>
+
+  <!-- footer 区块 -->
+  <rect x="20" y="350" width="560" height="70" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="40" y="385" font-size="18" font-weight="bold" fill="#78350f">&lt;footer&gt;</text>
+  <text x="40" y="410" font-size="13" fill="#92400e">版权信息</text>
+</svg>
