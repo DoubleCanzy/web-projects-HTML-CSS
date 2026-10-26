@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系表单 — Contact Form</title>
+
+    <!-- ===== SEO 标签 ===== -->
+    <meta name="description" content="语义化联系表单：姓名、邮箱、主题、留言、信息来源单选组与订阅复选框，全部控件带 label 关联与浏览器校验。">
+    <meta name="author" content="DoubleCanzy">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://doublecanzy.github.io/web-projects-HTML-CSS/Basic/contact-form/">
+
+    <!-- ===== Open Graph 标签（社交分享用） ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="联系表单 — Contact Form">
+    <meta property="og:description" content="表单接线练习：name/value 与真实 HTTP 请求一一对应。">
+    <meta property="og:url" content="https://doublecanzy.github.io/web-projects-HTML-CSS/Basic/contact-form/">
+    <meta property="og:locale" content="zh_CN">
+
+    <!-- 注意：本页按项目要求不做样式，仅结构与接线 -->
+</head>
+<body>
+
+    <header>
+        <h1>联系表单</h1>
+        <p>填写下面的表单，提交后数据会以 POST 请求发送到服务器。</p>
+    </header>
+
+    <main>
+
+        <!-- ===== 表单 =====
+             action：占位地址（真实项目中换成后端接口）
+             method="post"：数据放在请求体，适合较长内容 -->
+        <form action="https://example.com/contact" method="post">
+
+            <!-- 姓名：text + required，label 通过 for/id 关联 -->
+            <p>
+                <label for="name">姓名</label>
+                <input type="text" id="name" name="name" placeholder="张三" required>
+            </p>
+
+            <!-- 邮箱：type="email" 自带格式校验 -->
+            <p>
+                <label for="email">邮箱</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            </p>
+
+            <!-- 主题：select，占位选项 + 五个真实选项 -->
+            <p>
+                <label for="subject">主题</label>
+                <select id="subject" name="subject">
+                    <option value="" disabled selected>请选择主题…</option>
+                    <option value="general">一般咨询</option>
+                    <option value="collaboration">项目合作</option>
+                    <option value="feedback">意见反馈</option>
+                    <option value="bug">报告问题</option>
+                    <option value="other">其他</option>
+                </select>
+            </p>
+
+            <!-- 留言：textarea + required + minlength -->
+            <p>
+                <label for="message">留言</label>
+                <textarea id="message" name="message" rows="6" minlength="10" required
+                          placeholder="至少 10 个字，说说你想聊的内容……"></textarea>
+            </p>
+
+            <!-- 信息来源：radio 单选组，fieldset + legend 分组 -->
+            <fieldset>
+                <legend>你是从哪里知道我们的？</legend>
+
+                <p>
+                    <input type="radio" id="source-search" name="source" value="search">
+                    <label for="source-search">搜索引擎</label>
+                </p>
+                <p>
+                    <input type="radio" id="source-social" name="source" value="social">
+                    <label for="source-social">社交媒体</label>
+                </p>
+                <p>
+                    <input type="radio" id="source-friend" name="source" value="friend" checked>
+                    <label for="source-friend">朋友推荐</label>
+                </p>
+                <p>
+                    <input type="radio" id="source-other" name="source" value="other">
+                    <label for="source-other">其他</label>
+                </p>
+            </fieldset>
+
+            <!-- 订阅：可选 checkbox -->
+            <p>
+                <input type="checkbox" id="newsletter" name="newsletter" value="yes">
+                <label for="newsletter">订阅我的邮件通讯（可选）</label>
+            </p>
+
+            <!-- 提交按钮：type="submit"，文案明确 -->
+            <p>
+                <button type="submit">发送留言</button>
+            </p>
+
+        </form>
+
+    </main>
+
+    <footer>
+        <p>© 2026 · 表单提交到占位地址，无真实后端</p>
+    </footer>
+
+</body>
+</html>
