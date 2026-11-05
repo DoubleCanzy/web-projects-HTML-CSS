@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的照片展 — Photo Showcase</title>
+
+    <!-- ===== SEO 标签 ===== -->
+    <meta name="description" content="一个照片展示页：六张带 alt 与宽高属性的图片、三组 figure 与 figcaption 说明、一张装饰性图片与一段内嵌视频，练习 HTML 多媒体标记。">
+    <meta name="author" content="DoubleCanzy">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://doublecanzy.github.io/web-projects-HTML-CSS/Basic/photo-showcase/">
+
+    <!-- ===== Open Graph 标签（社交分享用） ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="我的照片展 — Photo Showcase">
+    <meta property="og:description" content="六张照片、三组图注与一段视频的 HTML 标记练习。">
+    <meta property="og:url" content="https://doublecanzy.github.io/web-projects-HTML-CSS/Basic/photo-showcase/">
+    <meta property="og:locale" content="zh_CN">
+
+    <!-- 注意：本页按项目要求不做任何样式，仅结构与媒体标记 -->
+</head>
+<body>
+
+    <!-- ===== 页面语义结构 ===== -->
+    <header>
+        <h1>我的照片展</h1>
+        <p>一个小型照片合集：每张图片都带描述、预留尺寸，还有一段内嵌视频。</p>
+    </header>
+
+    <main>
+
+        <!-- ===== 图组一：带图注的三张照片（figure + figcaption） ===== -->
+
+        <figure>
+            <img src="images/d17d1309ly1h3q3dkv4cwj218g1mxqae.jpg"
+                 alt="竖构图照片：人像风格画面"
+                 width="1600" height="2121">
+            <figcaption>照片 1：竖构图人像（图注是给所有人看的补充说明，与 alt 分工不同）</figcaption>
+        </figure>
+
+        <figure>
+            <img src="images/53885982_p20_master1200.jpg"
+                 alt="方形构图照片：插画风格画面"
+                 width="1151" height="1200">
+            <figcaption>照片 2：方形构图插画</figcaption>
+        </figure>
+
+        <figure>
+            <img src="images/28786764b0cbb8ff72ec18078a40a510.jpg"
+                 alt="竖版窄幅照片：人物或场景画面"
+                 width="564" height="988">
+            <figcaption>照片 3：窄幅竖版照片</figcaption>
+        </figure>
+
+        <!-- ===== 图组二：三张不带图注的图片 ===== -->
+
+        <img src="images/黑箱10.16独子单人.jpg"
+             alt="横构图照片：舞台或活动现场画面"
+             width="900" height="504">
+
+        <img src="images/黑箱11.1独子单人.png"
+             alt="竖构图照片：单人照画面"
+             width="644" height="828">
+
+        <img src="images/0076YaM6gy1hgysirnl7vj314r0m8b29562.png"
+             alt="宽幅全景照片：横构图场景画面"
+             width="1600" height="872">
+
+        <!-- ===== 装饰性图片：alt="" 让屏幕阅读器直接跳过 ===== -->
+        <img src="decorative-divider.svg"
+             alt=""
+             width="400" height="20">
+
+        <!-- ===== 内嵌视频 ===== -->
+        <figure>
+            <video controls
+                   width="640" height="360"
+                   poster="video-poster.svg">
+                <!-- 视频源：MDN 提供的 CC0 示例视频（无网络时显示海报与后备文字） -->
+                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                        type="video/mp4">
+                <p>你的浏览器不支持 video 标签，或视频源无法加载。这是一段花朵绽放的示例视频。</p>
+            </video>
+            <figcaption>视频：花朵绽放（CC0 示例视频，来自 MDN）</figcaption>
+        </figure>
+
+    </main>
+
+    <footer>
+        <p>© 2026 · 我的照片展</p>
+    </footer>
+
+</body>
+</html>
